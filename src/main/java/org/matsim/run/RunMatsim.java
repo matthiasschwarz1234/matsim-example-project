@@ -21,10 +21,12 @@ package org.matsim.run;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.controler.AbstractModule;
 import org.matsim.core.controler.Controler;
-import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.core.gbl.Gbl;
 import org.matsim.core.scenario.ScenarioUtils;
+
+import ch.sbb.matsim.routing.pt.raptor.SwissRailRaptorModule;
 
 /**
  * @author nagel
@@ -55,6 +57,14 @@ public class RunMatsim {
 		// possibly modify controler here
 		
 		// ---
+		
+        // use fast pt router
+		controler.addOverridingModule(new AbstractModule() {
+            @Override
+            public void install() {
+                install(new SwissRailRaptorModule());
+            }
+		});
 		
 		controler.run();
 	}
