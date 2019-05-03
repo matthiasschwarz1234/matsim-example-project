@@ -206,7 +206,6 @@ class CreateDemand {
 		// if the landcover feature is in the correct region generate a random coordinate within the bounding box of the
 		// landcover feature. Repeat until a coordinate is found which is actually within the landcover feature.
 		do {
-			selectedLandcover = landcover.sample();
 			Envelope envelope = selectedLandcover.getEnvelopeInternal();
 
 			x = envelope.getMinX() + envelope.getWidth() * random.nextDouble();
