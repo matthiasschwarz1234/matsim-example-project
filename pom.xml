@@ -86,6 +86,12 @@
 			<version>3.6.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.72</version>
+		</dependency>
+
 		<!--to get ExamplesUtils. commented out since it is another dependency, but in general this is recommended. -->
 		<!--<dependency>-->
 		<!--	<groupId>org.matsim</groupId>-->

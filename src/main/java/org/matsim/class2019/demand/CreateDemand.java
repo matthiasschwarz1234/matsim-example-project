@@ -45,8 +45,9 @@ class CreateDemand {
 	private final EnumeratedDistribution<Geometry> landcover;
 	private final Path interRegionCommuterStatistic;
 	private final Path innerRegionCommuterStatistic;
-	private final Population population;
 	private final Random random = new Random();
+
+	private Population population;
 
 	CreateDemand(Path interRegionCommuterStatistic, Path innerRegionCommuterStatistic, Path regionsShapeFile, Path landcoverShapeFile) {
 
@@ -83,6 +84,7 @@ class CreateDemand {
 	}
 
 	void create() {
+		population = PopulationUtils.createPopulation(ConfigUtils.createConfig());
 		createInterRegionCommuters();
 		createInnerRegionCommuters();
 		logger.info("Done.");
