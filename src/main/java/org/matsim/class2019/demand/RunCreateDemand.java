@@ -6,8 +6,11 @@ import org.matsim.api.core.v01.population.Population;
 import org.matsim.api.core.v01.population.PopulationWriter;
 
 import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 public class RunCreateDemand {
+
+	private static final Logger logger = Logger.getLogger("RunCreateDemand");
 
 	public static void main(String[] args) {
 
@@ -19,6 +22,7 @@ public class RunCreateDemand {
 		creator.create();
 		Population result = creator.getPopulation();
 
+		logger.info("Writing " + result.getPersons().size() + " persons to: " + input.output);
 		new PopulationWriter(result).write(Paths.get(input.output).toString());
 	}
 

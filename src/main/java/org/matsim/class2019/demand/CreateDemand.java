@@ -38,7 +38,7 @@ class CreateDemand {
 
 	private static final int HOME_END_TIME = 9 * 60 * 60;
 	private static final int WORK_END_TIME = 17 * 60 * 60;
-	private static final double SCALE_FACTOR = 0.1;
+	private static final double SCALE_FACTOR = 0.01;
 	private static final GeometryFactory geometryFactory = new GeometryFactory();
 
 	private final Map<String, Geometry> regions;
@@ -188,6 +188,9 @@ class CreateDemand {
 
 		Leg toHome = population.getFactory().createLeg(mode);
 		plan.addLeg(toHome);
+
+		Activity homeActivity2 = population.getFactory().createActivityFromCoord("home", home);
+		plan.addActivity(homeActivity2);
 
 		return plan;
 	}
