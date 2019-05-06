@@ -21,6 +21,8 @@ import java.util.Collection;
 public class CreateNetworkFromOSM {
 
 	private static Path inputFile = Paths.get("C:\\Users\\Janek\\Desktop\\thueringen-latest(2).osm\\thueringen-latest(2).osm");
+	private static Path filterShapeFile = Paths.get("C:\\Users\\Janek\\Desktop\\2019_ss_L013_matsim_ue_03_erfurt_shape\\erfurt.shp");
+	private static Path outputFile = Paths.get("C:\\Users\\Janek\\Desktop\\erfurt-network.xml.gz");
 	private static String epsg = "EPSG:25832";
 	
 	public static void main(String[] args) {
@@ -37,13 +39,13 @@ public class CreateNetworkFromOSM {
 					TransformationFactory.WGS84, epsg);
 		
 		OsmNetworkReader reader = new OsmNetworkReader(network, transformation, true, true);
-		reader.addOsmFilter(new NetworkFilter(Paths.get("C:\\Users\\Janek\\Desktop\\2019_ss_L013_matsim_ue_03_erfurt_shape\\erfurt.shp")));
+		reader.addOsmFilter(new NetworkFilter(filterShapeFile));
 		
 		reader.parse(inputFile.toString());
 		
 		new NetworkCleaner().run(network);
-		
-		new NetworkWriter(network).write(Paths.get("C:\\Users\\Janek\\Desktop\\test-network.xml.gz").toString());
+
+		new NetworkWriter(network).write(outputFile.toString());
 	}
 
 	/**
