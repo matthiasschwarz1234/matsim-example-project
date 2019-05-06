@@ -10,12 +10,12 @@ import org.matsim.api.core.v01.population.Person;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TravellTimeEventHandler implements ActivityEndEventHandler, ActivityStartEventHandler {
+public class TravelTimeEventHandler implements ActivityEndEventHandler, ActivityStartEventHandler {
 
 	private final Map<Id<Person>, ActivityEndEvent> openTrips = new HashMap<>();
 	private final Map<Id<Person>, Double> travelTimes = new HashMap<>();
 
-	Map<Id<Person>, Double> getTravellTimesByPerson() {
+	Map<Id<Person>, Double> getTravelTimesByPerson() {
 		return travelTimes;
 	}
 

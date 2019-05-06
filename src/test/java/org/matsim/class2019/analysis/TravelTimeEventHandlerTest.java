@@ -13,7 +13,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class TravellTimeEventHandlerTest {
+public class TravelTimeEventHandlerTest {
 
 	@Test
 	public void testEventHandling() {
@@ -30,14 +30,14 @@ public class TravellTimeEventHandlerTest {
 		ActivityStartEvent interactionStart = new ActivityStartEvent(actInteraction, person1, linkId, facilityId, "car interaction");
 		ActivityEndEvent interactionEnd = new ActivityEndEvent(actInteraction, person1, linkId, facilityId, "car interaction");
 
-		TravellTimeEventHandler handler = new TravellTimeEventHandler();
+		TravelTimeEventHandler handler = new TravelTimeEventHandler();
 
 		handler.handleEvent(endEvent);
 		handler.handleEvent(interactionStart);
 		handler.handleEvent(interactionEnd);
 		handler.handleEvent(startEvent);
 
-		Map<Id<Person>, Double> travelTimeByAgent = handler.getTravellTimesByPerson();
+		Map<Id<Person>, Double> travelTimeByAgent = handler.getTravelTimesByPerson();
 
 		assertEquals(1, travelTimeByAgent.size());
 		assertTrue(travelTimeByAgent.containsKey(person1));
@@ -66,7 +66,7 @@ public class TravellTimeEventHandlerTest {
 		ActivityEndEvent interactionEnd1 = new ActivityEndEvent(actInteraction, person1, linkId, facilityId, "car interaction");
 		ActivityEndEvent interactionEnd2 = new ActivityEndEvent(actInteraction, person1, linkId, facilityId, "car interaction");
 
-		TravellTimeEventHandler handler = new TravellTimeEventHandler();
+		TravelTimeEventHandler handler = new TravelTimeEventHandler();
 
 		handler.handleEvent(endEvent1);
 		handler.handleEvent(interactionStart1);
@@ -78,7 +78,7 @@ public class TravellTimeEventHandlerTest {
 		handler.handleEvent(interactionEnd2);
 		handler.handleEvent(startEvent2);
 
-		Map<Id<Person>, Double> travelTimeByAgent = handler.getTravellTimesByPerson();
+		Map<Id<Person>, Double> travelTimeByAgent = handler.getTravelTimesByPerson();
 		assertEquals(2, travelTimeByAgent.size());
 		assertTrue(travelTimeByAgent.containsKey(person1));
 		assertTrue(travelTimeByAgent.containsKey(person2));
