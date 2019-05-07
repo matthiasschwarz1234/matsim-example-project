@@ -5,7 +5,6 @@ import org.matsim.api.core.v01.Coord;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.events.ActivityEndEvent;
 import org.matsim.api.core.v01.events.LinkEnterEvent;
-import org.matsim.api.core.v01.events.LinkLeaveEvent;
 import org.matsim.api.core.v01.network.Link;
 import org.matsim.api.core.v01.network.Network;
 import org.matsim.api.core.v01.network.Node;
@@ -35,14 +34,12 @@ public class TravelDistanceEventHandlerTest {
 
 		ActivityEndEvent endEvent = new ActivityEndEvent(1, agentId, link.getId(), null, "home");
 		LinkEnterEvent enterEvent = new LinkEnterEvent(1, vehicleId, link.getId());
-		LinkLeaveEvent leaveEvent = new LinkLeaveEvent(4, vehicleId, link.getId());
 
 		TravelDistanceEventHandler handler = new TravelDistanceEventHandler(network);
 
 		// act
 		handler.handleEvent(endEvent);
 		handler.handleEvent(enterEvent);
-		handler.handleEvent(leaveEvent);
 
 		// assert
 		double distanceByPerson = handler.getTravelDistancesByPerson().get(agentId);

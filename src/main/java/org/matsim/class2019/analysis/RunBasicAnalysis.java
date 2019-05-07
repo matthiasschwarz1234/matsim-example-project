@@ -19,6 +19,7 @@ public class RunBasicAnalysis {
 
 	public static void main(String[] args) {
 
+
 		// get the paths for the network and the events
 		Path networkpath = Paths.get(args[0]);
 		Path baseCaseEventsPath = Paths.get(args[1]);
@@ -55,11 +56,11 @@ public class RunBasicAnalysis {
 
 		new MatsimEventsReader(policyCaseManager).readFile(policyCaseEventsPath.toString());
 
-		System.out.println("Total travel time base case: " + travelTimeEventHandler.calculateOverallTravelTime()
-				+ " policy case: " + travelTimeEventHandlerPolicy.calculateOverallTravelTime());
+		System.out.println("Total travel time base case: " + travelTimeEventHandler.calculateOverallTravelTime() / 60 / 60 + " hours");
+		System.out.println("Total travel time policy case: " + travelTimeEventHandlerPolicy.calculateOverallTravelTime() / 60 / 60 + " hours");
 
-		System.out.println("Total travel distance base case: " + travelDistanceEventHandler.getTotalTravelDistance() +
-				" policy case: " + travelDistanceEventHandlerPolicy.getTotalTravelDistance());
+		System.out.println("Total travel distance base case: " + travelDistanceEventHandler.getTotalTravelDistance() / 1000 + "km");
+		System.out.println(" policy case: " + travelDistanceEventHandlerPolicy.getTotalTravelDistance() / 1000 + "km");
 
 		// calculate travel time for people who used the street
 		double baseCaseTravelTime = travelTimeEventHandler.getTravelTimesByPerson().entrySet().stream()
@@ -72,8 +73,8 @@ public class RunBasicAnalysis {
 				.mapToDouble(entry -> entry.getValue())
 				.sum();
 
-		System.out.println("Travel time for people who travelled on link. Base case: " + baseCaseTravelTime
-				+ " policy case: " + policyCaseTravelTime);
+		System.out.println("Difference in travel time for people who travelled on link. Base case: "
+				+ (policyCaseTravelTime - baseCaseTravelTime));
 
 		// calculate travel distances for people who used the street
 		double baseCaseDistance = travelDistanceEventHandler.getTravelDistancesByPerson().entrySet().stream()
@@ -86,7 +87,6 @@ public class RunBasicAnalysis {
 				.mapToDouble(entry -> entry.getValue())
 				.sum();
 
-		System.out.println("Trave distances for people who travelled on link: Base case: " + baseCaseDistance
-				+ " policy case: " + policyCaseDistance);
+		System.out.println("Difference in travel distances for people who travelled on link: " + (policyCaseDistance - baseCaseDistance));
 	}
 }

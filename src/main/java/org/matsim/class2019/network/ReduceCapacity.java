@@ -19,8 +19,8 @@ public class ReduceCapacity {
 		Network network = NetworkUtils.createNetwork();
 		new MatsimNetworkReader(network).readFile(inputNetwork.toString());
 
-		network.getLinks().get(Id.createLinkId("16578")).setCapacity(1);
-		network.getLinks().get(Id.createLinkId("16584")).setCapacity(1);
+		network.getLinks().get(Id.createLinkId("54099")).setCapacity(1);
+		network.getLinks().get(Id.createLinkId("4096")).setCapacity(1);
 
 		new NetworkWriter(network).write(outputNetwork.toString());
 	}
