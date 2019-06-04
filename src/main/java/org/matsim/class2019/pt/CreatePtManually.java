@@ -25,13 +25,13 @@ import java.util.List;
 
 public class CreatePtManually {
 
-	private static final Path transitSchedule = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example\\transitSchedule.xml.gz");
-	private static final Path transitVehicles = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example\\transitVehicles.xml.gz");
-	private static final Path networkPath = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example\\network.xml.gz");
+	private static final Path transitSchedule = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt\\transitSchedule.xml.gz");
+	private static final Path transitVehicles = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt\\transitVehicles.xml.gz");
+	private static final Path networkPath = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt\\network.xml.gz");
 
-	private static final Path outputNetwork = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example\\super-train-network.xml.gz");
-	private static final Path outputVehicles = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example\\super-train-transitVehicles.xml.gz");
-	private static final Path outputTransitSchedule = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example\\super-train-transitSchedule.xml.gz");
+	private static final Path outputNetwork = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt\\super-train-network.xml.gz");
+	private static final Path outputVehicles = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt\\super-train-transitVehicles.xml.gz");
+	private static final Path outputTransitSchedule = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt\\super-train-transitSchedule.xml.gz");
 
 	public static void main(String[] args) {
 		new CreatePtManually().create();

@@ -20,9 +20,9 @@ import java.time.LocalDate;
 
 public class CreatePtFromGtfs {
 
-	private static Path gtfsFeed = Paths.get("C:\\Users\\Janek\\Downloads\\VMT_GTFS.zip");
-	private static Path network = Paths.get("C:\\Users\\Janek\\Desktop\\output\\run05\\output_network.xml.gz");
-	private static Path outputFolder = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example");
+	private static Path gtfsFeed = Paths.get("G:\\Users\\Janek\\Downloads\\VMT_GTFS.zip");
+	private static Path network = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt\\network.xml.gz");
+	private static Path outputFolder = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt");
 
 	public static void main(String[] args) {
 		new CreatePtFromGtfs().createPt();
