@@ -36,8 +36,8 @@ class CreateDemand {
 	private static final String REGION_KEY = "Schluessel";
 	private static final String HOME_AND_WORK_REGION = "Wohnort gleich Arbeitsort";
 
-	private static final int HOME_END_TIME = 9 * 60 * 60;
-	private static final int WORK_END_TIME = 17 * 60 * 60;
+	private static final int HOME_END_TIME = 8 * 60 * 60;
+	private static final int WORK_END_TIME = 16 * 60 * 60;
 	private static final double SCALE_FACTOR = 0.01;
 	private static final GeometryFactory geometryFactory = new GeometryFactory();
 
@@ -176,14 +176,14 @@ class CreateDemand {
 		Plan plan = population.getFactory().createPlan();
 
 		Activity homeActivity = population.getFactory().createActivityFromCoord("home", home);
-		homeActivity.setEndTime(HOME_END_TIME);
+		homeActivity.setEndTime(HOME_END_TIME + Math.random() * 3600);
 		plan.addActivity(homeActivity);
 
 		Leg toWork = population.getFactory().createLeg(mode);
 		plan.addLeg(toWork);
 
 		Activity workActivity = population.getFactory().createActivityFromCoord("work", work);
-		workActivity.setEndTime(WORK_END_TIME);
+		workActivity.setEndTime(WORK_END_TIME + Math.random() * 3600);
 		plan.addActivity(workActivity);
 
 		Leg toHome = population.getFactory().createLeg(mode);
