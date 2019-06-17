@@ -38,7 +38,7 @@ class CreateDemand {
 
 	private static final int HOME_END_TIME = 8 * 60 * 60;
 	private static final int WORK_END_TIME = 16 * 60 * 60;
-	private static final double SCALE_FACTOR = 0.01;
+	private static final double SCALE_FACTOR = 0.1;
 	private static final GeometryFactory geometryFactory = new GeometryFactory();
 
 	private final Map<String, Geometry> regions;
@@ -156,7 +156,7 @@ class CreateDemand {
 			Coord work = getCoordInGeometry(workRegion);
 			String id = homeRegionKey + "_" + workRegionKey + "_" + i;
 
-			Person person = createPerson(home, work, TransportMode.car, id);
+			Person person = createPerson(home, work, TransportMode.drt, id);
 			population.addPerson(person);
 		}
 	}

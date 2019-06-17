@@ -20,9 +20,9 @@ import java.time.LocalDate;
 
 public class CreatePtFromGtfs {
 
-	private static Path gtfsFeed = Paths.get("G:\\Users\\Janek\\Downloads\\VMT_GTFS.zip");
-	private static Path network = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt\\network.xml.gz");
-	private static Path outputFolder = Paths.get("G:\\Users\\Janek\\Desktop\\erfurt-with-pt");
+	private static Path gtfsFeed = Paths.get("C:\\Users\\Janek\\Downloads\\VMT_GTFS.zip");
+	private static Path network = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example\\network-without-pt.xml.gz");
+	private static Path outputFolder = Paths.get("C:\\Users\\Janek\\Desktop\\pt-example");
 
 	public static void main(String[] args) {
 		new CreatePtFromGtfs().createPt();
@@ -35,7 +35,7 @@ public class CreatePtFromGtfs {
 
 		//output files
 		String scheduleFile = outputFolder.resolve("transitSchedule.xml.gz").toString();
-		String networkFile = outputFolder.resolve("network.xml.gz").toString();
+		String networkFile = outputFolder.resolve("network-with-pt.xml.gz").toString();
 		String transitVehiclesFile = outputFolder.resolve("transitVehicles.xml.gz").toString();
 
 		//Convert GTFS
@@ -53,6 +53,7 @@ public class CreatePtFromGtfs {
 
 		//Create simple transit vehicles
 		new CreateVehiclesForSchedule(scenario.getTransitSchedule(), scenario.getTransitVehicles()).run();
+		scenario.getTransitVehicles().getVehicleTypes().values().forEach(type -> type.setPcuEquivalents(0));
 
 		//Write out network, vehicles and schedule
 		new NetworkWriter(scenario.getNetwork()).write(networkFile);
