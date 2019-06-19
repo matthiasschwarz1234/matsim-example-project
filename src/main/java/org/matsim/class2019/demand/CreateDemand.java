@@ -156,7 +156,7 @@ class CreateDemand {
 			Coord work = getCoordInGeometry(workRegion);
 			String id = homeRegionKey + "_" + workRegionKey + "_" + i;
 
-			Person person = createPerson(home, work, TransportMode.drt, id);
+			Person person = createPerson(home, work, TransportMode.car, id);
 			population.addPerson(person);
 		}
 	}
